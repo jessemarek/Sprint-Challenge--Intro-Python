@@ -61,8 +61,8 @@ for c in cities:
 #
 # Be aware that the user could specify either a lower-left/upper-right pair of
 # coordinates, or an upper-left/lower-right pair of coordinates.
-# Hint: normalize
-# the input data so that it's always one or the other, then search for cities.
+# Hint: normalize the input data so that it's always one or the other,
+# then search for cities.
 # In the example below, inputting 32, -120 first and then 45, -100 should not
 # change the results of what the `cityreader_stretch` function returns.
 #
@@ -81,19 +81,38 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
-# coordinate1 = input("Enter Lat1, Lon1: ").strip().split()
-# coordinate2 = input("Enter Lat2, Lon2: ").strip().split()
+""" coordinate1 = input("Enter Lat1, Lon1: ").strip().split(",")
+coordinate2 = input("Enter Lat2, Lon2: ").strip().split(",") """
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
+    global within
     within = []
 
     # TODO Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
+    if lat1 < lat2:
+        lat_lower = lat1
+        lat_upper = lat2
+    else:
+        lat_lower = lat2
+        lat_upper = lat1
+
+    if lon1 < lon2:
+        lon_lower = lon1
+        lon_upper = lon2
+    else:
+        lon_lower = lon2
+        lon_upper = lon1
+    # if the city Lat is between the Lat range input it
+    # should be within the area defined
+    # and if the city Lon is within the Lon range it should
+    # also be within the defined area
     for c in cities:
-        c.la
+        if lat_lower <= c.lat <= lat_upper and lon_lower <= c.lon <= lon_upper:
+            within.append(c)
 
     return within
 
