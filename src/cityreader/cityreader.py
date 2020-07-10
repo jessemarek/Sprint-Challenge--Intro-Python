@@ -7,8 +7,8 @@ import csv
 class City:
     def __init__(self, name, lat, lon):
         self.name = name
-        self.lat = lat
-        self.lon = lon
+        self.lat = float(lat)
+        self.lon = float(lon)
 
     def __str__(self):
         return f"{self.name}, {self.lat}, {self.lon}"
@@ -81,6 +81,8 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+# coordinate1 = input("Enter Lat1, Lon1: ").strip().split()
+# coordinate2 = input("Enter Lat2, Lon2: ").strip().split()
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
@@ -90,5 +92,11 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # TODO Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
+    for c in cities:
+        c.la
 
     return within
+
+
+""" cityreader_stretch(coordinate1[0], coordinate1[1],
+                   coordinate2[0], coordinate2[1], cities) """
