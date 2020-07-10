@@ -81,8 +81,8 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
-""" coordinate1 = input("Enter Lat1, Lon1: ").strip().split(",")
-coordinate2 = input("Enter Lat2, Lon2: ").strip().split(",") """
+coordinate1 = input("Enter Lat1, Lon1: ").strip().split(",")
+coordinate2 = input("Enter Lat2, Lon2: ").strip().split(",")
 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
@@ -91,8 +91,14 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     within = []
 
     # TODO Ensure that the lat and lon valuse are all floats
-    # Go through each city and check to see if it falls within
-    # the specified coordinates.
+    lat1 = float(lat1)
+    lat2 = float(lat2)
+    lon1 = float(lon1)
+    lon2 = float(lon2)
+
+    # make sure the numbers are put in the proper order
+    # no matter how the user entered them so that we always
+    # get the same results for the same pairs of corners
     if lat1 < lat2:
         lat_lower = lat1
         lat_upper = lat2
@@ -106,6 +112,8 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     else:
         lon_lower = lon2
         lon_upper = lon1
+    # the specified coordinates.
+    # Go through each city and check to see if it falls within
     # if the city Lat is between the Lat range input it
     # should be within the area defined
     # and if the city Lon is within the Lon range it should
@@ -117,5 +125,8 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     return within
 
 
-""" cityreader_stretch(coordinate1[0], coordinate1[1],
-                   coordinate2[0], coordinate2[1], cities) """
+cityreader_stretch(coordinate1[0], coordinate1[1],
+                   coordinate2[0], coordinate2[1], cities)
+
+for c in within:
+    print(c)
